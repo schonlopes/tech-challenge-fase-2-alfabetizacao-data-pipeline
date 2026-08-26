@@ -23,4 +23,5 @@ cloud/gcp/terraform.tfvars
 # Artefatos temporarios da apresentacao/video.
 artifacts/executive/_rendered/
 artifacts/executive/_audio/
-
+artifacts/executive/_build/
+artifacts/executive/*.inspect.ndjson
