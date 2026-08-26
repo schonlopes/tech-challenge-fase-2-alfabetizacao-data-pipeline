@@ -1,0 +1,5 @@
+project_id          = "seu-projeto-gcp"
+data_bucket_name    = "seu-projeto-gcp-alfabetizacao-lake"
+billing_account_id  = "billingAccounts/XXXXXX-XXXXXX-XXXXXX"
+monthly_budget_brl  = 100
+
