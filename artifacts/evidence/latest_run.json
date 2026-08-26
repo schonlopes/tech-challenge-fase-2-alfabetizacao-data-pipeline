@@ -1,0 +1,49 @@
+{
+  "run_id": "demo-002",
+  "source": "sample",
+  "started_at": "2026-08-26T21:29:03.032622+00:00",
+  "finished_at": "2026-08-26T21:29:04.654362+00:00",
+  "status": "PASS",
+  "quality_score_pct": 100.0,
+  "row_counts": {
+    "bronze_batch": {
+      "uf": 6,
+      "meta_alfabetizacao_brasil": 2,
+      "meta_alfabetizacao_uf": 6,
+      "meta_alfabetizacao_municipio": 12,
+      "municipio": 12,
+      "alunos": 96
+    },
+    "bronze_stream": 24,
+    "silver": {
+      "uf": 6,
+      "meta_alfabetizacao_brasil": 2,
+      "meta_alfabetizacao_uf": 6,
+      "meta_alfabetizacao_municipio": 12,
+      "municipio": 12,
+      "alunos": 96,
+      "dim_municipio": 6
+    },
+    "gold": {
+      "indicador_municipio": 12,
+      "meta_resultado_municipio": 42,
+      "evolucao_municipio": 12,
+      "resumo_uf": 6,
+      "monitoramento_stream": 12
+    }
+  },
+  "storage_bytes": {
+    "bronze": 82360,
+    "bronze_stream": 13702,
+    "silver": 46595,
+    "gold": 29146
+  },
+  "timings": {
+    "batch_bronze_seconds": 0.355,
+    "stream_microbatch_seconds": 0.091,
+    "silver_seconds": 0.459,
+    "gold_seconds": 0.363,
+    "quality_seconds": 0.353,
+    "total_seconds": 1.622
+  }
+}

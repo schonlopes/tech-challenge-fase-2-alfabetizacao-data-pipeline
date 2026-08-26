@@ -1,0 +1,329 @@
+{
+  "run_id": "demo-002",
+  "generated_at": "2026-08-26T21:29:04.646362+00:00",
+  "status": "PASS",
+  "score_pct": 100.0,
+  "summary": {
+    "checks": 35,
+    "passed": 35,
+    "critical_failures": 0,
+    "warnings": 0
+  },
+  "checks": [
+    {
+      "name": "row_count",
+      "layer": "silver",
+      "table": "uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 6,
+      "expectation": "> 0"
+    },
+    {
+      "name": "not_null_key",
+      "layer": "silver",
+      "table": "uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "unique_key",
+      "layer": "silver",
+      "table": "uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "row_count",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_brasil",
+      "severity": "critical",
+      "passed": true,
+      "observed": 2,
+      "expectation": "> 0"
+    },
+    {
+      "name": "not_null_key",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_brasil",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "unique_key",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_brasil",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "row_count",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 6,
+      "expectation": "> 0"
+    },
+    {
+      "name": "not_null_key",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "unique_key",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "row_count",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 12,
+      "expectation": "> 0"
+    },
+    {
+      "name": "not_null_key",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "unique_key",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "row_count",
+      "layer": "silver",
+      "table": "municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 12,
+      "expectation": "> 0"
+    },
+    {
+      "name": "not_null_key",
+      "layer": "silver",
+      "table": "municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "unique_key",
+      "layer": "silver",
+      "table": "municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "row_count",
+      "layer": "silver",
+      "table": "alunos",
+      "severity": "critical",
+      "passed": true,
+      "observed": 96,
+      "expectation": "> 0"
+    },
+    {
+      "name": "not_null_key",
+      "layer": "silver",
+      "table": "alunos",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "unique_key",
+      "layer": "silver",
+      "table": "alunos",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0"
+    },
+    {
+      "name": "taxa_range",
+      "layer": "silver",
+      "table": "uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= taxa <= 100"
+    },
+    {
+      "name": "taxa_range",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_brasil",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= taxa <= 100"
+    },
+    {
+      "name": "taxa_range",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= taxa <= 100"
+    },
+    {
+      "name": "taxa_range",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= taxa <= 100"
+    },
+    {
+      "name": "taxa_range",
+      "layer": "silver",
+      "table": "municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= taxa <= 100"
+    },
+    {
+      "name": "level_distribution_sum",
+      "layer": "silver",
+      "table": "uf",
+      "severity": "warning",
+      "passed": true,
+      "observed": 0,
+      "expectation": "soma = 100 +/- 0.5"
+    },
+    {
+      "name": "level_distribution_sum",
+      "layer": "silver",
+      "table": "municipio",
+      "severity": "warning",
+      "passed": true,
+      "observed": 0,
+      "expectation": "soma = 100 +/- 0.5"
+    },
+    {
+      "name": "participacao_range",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_brasil",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= percentual <= 100"
+    },
+    {
+      "name": "participacao_range",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_uf",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= percentual <= 100"
+    },
+    {
+      "name": "participacao_range",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "0 <= percentual <= 100"
+    },
+    {
+      "name": "municipality_fk",
+      "layer": "silver",
+      "table": "municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0 orfaos"
+    },
+    {
+      "name": "municipality_fk",
+      "layer": "silver",
+      "table": "meta_alfabetizacao_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0 orfaos"
+    },
+    {
+      "name": "municipality_fk",
+      "layer": "silver",
+      "table": "alunos",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0 orfaos"
+    },
+    {
+      "name": "literacy_cutoff_consistency",
+      "layer": "silver",
+      "table": "alunos",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "alfabetizado equivale a proficiencia >= 743"
+    },
+    {
+      "name": "cross_table_rate",
+      "layer": "silver",
+      "table": "municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "taxas agregadas coincidem"
+    },
+    {
+      "name": "gold_grain",
+      "layer": "gold",
+      "table": "indicador_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0 duplicatas"
+    },
+    {
+      "name": "enrichment_complete",
+      "layer": "gold",
+      "table": "indicador_municipio",
+      "severity": "critical",
+      "passed": true,
+      "observed": 0,
+      "expectation": "= 0 sem diretorio municipal"
+    }
+  ]
+}

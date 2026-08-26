@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+.env
+
+# Dados gerados localmente; evidencias consolidadas permanecem versionadas.
+data/lake/
+data/stream/
+data/staging/
+artifacts/evidence/run_*.json
+artifacts/evidence/quality_*.json
+
+# Terraform e arquivos locais de credenciais.
+cloud/gcp/.terraform/
+cloud/gcp/*.tfstate*
+cloud/gcp/.terraform.lock.hcl
+cloud/gcp/terraform.tfvars
+*.key.json
+
+# Artefatos temporarios da apresentacao/video.
+artifacts/executive/_rendered/
+artifacts/executive/_audio/
+

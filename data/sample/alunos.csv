@@ -1,0 +1,97 @@
+ano,id_municipio,id_escola,id_aluno,caderno,serie,rede,presenca,preenchimento_caderno,alfabetizado,proficiencia,peso_aluno
+2023,1200401,ESC01,A202301001,C2,2 ano,Publica,Presente,Preenchido,Nao,691,1.0
+2023,1200401,ESC01,A202301002,C3,2 ano,Publica,Presente,Preenchido,Nao,710,1.0
+2023,1200401,ESC01,A202301003,C4,2 ano,Publica,Presente,Preenchido,Nao,729,1.0
+2023,1200401,ESC01,A202301004,C1,2 ano,Publica,Presente,Preenchido,Sim,748,1.0
+2023,1200401,ESC01,A202301005,C2,2 ano,Publica,Presente,Preenchido,Sim,767,1.0
+2023,1200401,ESC01,A202301006,C3,2 ano,Publica,Presente,Preenchido,Sim,786,1.0
+2023,1200401,ESC01,A202301007,C4,2 ano,Publica,Presente,Preenchido,Sim,805,1.0
+2023,1200401,ESC01,A202301008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2024,1200401,ESC01,A202401001,C2,2 ano,Publica,Presente,Preenchido,Nao,705,1.0
+2024,1200401,ESC01,A202401002,C3,2 ano,Publica,Presente,Preenchido,Nao,724,1.0
+2024,1200401,ESC01,A202401003,C4,2 ano,Publica,Presente,Preenchido,Sim,743,1.0
+2024,1200401,ESC01,A202401004,C1,2 ano,Publica,Presente,Preenchido,Sim,762,1.0
+2024,1200401,ESC01,A202401005,C2,2 ano,Publica,Presente,Preenchido,Sim,781,1.0
+2024,1200401,ESC01,A202401006,C3,2 ano,Publica,Presente,Preenchido,Sim,800,1.0
+2024,1200401,ESC01,A202401007,C4,2 ano,Publica,Presente,Preenchido,Sim,819,1.0
+2024,1200401,ESC01,A202401008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2023,1200203,ESC02,A202302001,C2,2 ano,Publica,Presente,Preenchido,Nao,693,1.0
+2023,1200203,ESC02,A202302002,C3,2 ano,Publica,Presente,Preenchido,Nao,712,1.0
+2023,1200203,ESC02,A202302003,C4,2 ano,Publica,Presente,Preenchido,Nao,731,1.0
+2023,1200203,ESC02,A202302004,C1,2 ano,Publica,Presente,Preenchido,Sim,750,1.0
+2023,1200203,ESC02,A202302005,C2,2 ano,Publica,Presente,Preenchido,Sim,769,1.0
+2023,1200203,ESC02,A202302006,C3,2 ano,Publica,Presente,Preenchido,Sim,788,1.0
+2023,1200203,ESC02,A202302007,C4,2 ano,Publica,Presente,Preenchido,Sim,807,1.0
+2023,1200203,ESC02,A202302008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2024,1200203,ESC02,A202402001,C2,2 ano,Publica,Presente,Preenchido,Nao,707,1.0
+2024,1200203,ESC02,A202402002,C3,2 ano,Publica,Presente,Preenchido,Nao,726,1.0
+2024,1200203,ESC02,A202402003,C4,2 ano,Publica,Presente,Preenchido,Sim,745,1.0
+2024,1200203,ESC02,A202402004,C1,2 ano,Publica,Presente,Preenchido,Sim,764,1.0
+2024,1200203,ESC02,A202402005,C2,2 ano,Publica,Presente,Preenchido,Sim,783,1.0
+2024,1200203,ESC02,A202402006,C3,2 ano,Publica,Presente,Preenchido,Sim,802,1.0
+2024,1200203,ESC02,A202402007,C4,2 ano,Publica,Presente,Preenchido,Sim,821,1.0
+2024,1200203,ESC02,A202402008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2023,3550308,ESC03,A202303001,C2,2 ano,Publica,Presente,Preenchido,Nao,695,1.0
+2023,3550308,ESC03,A202303002,C3,2 ano,Publica,Presente,Preenchido,Nao,714,1.0
+2023,3550308,ESC03,A202303003,C4,2 ano,Publica,Presente,Preenchido,Nao,733,1.0
+2023,3550308,ESC03,A202303004,C1,2 ano,Publica,Presente,Preenchido,Sim,752,1.0
+2023,3550308,ESC03,A202303005,C2,2 ano,Publica,Presente,Preenchido,Sim,771,1.0
+2023,3550308,ESC03,A202303006,C3,2 ano,Publica,Presente,Preenchido,Sim,790,1.0
+2023,3550308,ESC03,A202303007,C4,2 ano,Publica,Presente,Preenchido,Sim,809,1.0
+2023,3550308,ESC03,A202303008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2024,3550308,ESC03,A202403001,C2,2 ano,Publica,Presente,Preenchido,Nao,709,1.0
+2024,3550308,ESC03,A202403002,C3,2 ano,Publica,Presente,Preenchido,Nao,728,1.0
+2024,3550308,ESC03,A202403003,C4,2 ano,Publica,Presente,Preenchido,Sim,747,1.0
+2024,3550308,ESC03,A202403004,C1,2 ano,Publica,Presente,Preenchido,Sim,766,1.0
+2024,3550308,ESC03,A202403005,C2,2 ano,Publica,Presente,Preenchido,Sim,785,1.0
+2024,3550308,ESC03,A202403006,C3,2 ano,Publica,Presente,Preenchido,Sim,804,1.0
+2024,3550308,ESC03,A202403007,C4,2 ano,Publica,Presente,Preenchido,Sim,823,1.0
+2024,3550308,ESC03,A202403008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2023,3509502,ESC04,A202304001,C2,2 ano,Publica,Presente,Preenchido,Nao,697,1.0
+2023,3509502,ESC04,A202304002,C3,2 ano,Publica,Presente,Preenchido,Nao,716,1.0
+2023,3509502,ESC04,A202304003,C4,2 ano,Publica,Presente,Preenchido,Nao,735,1.0
+2023,3509502,ESC04,A202304004,C1,2 ano,Publica,Presente,Preenchido,Sim,754,1.0
+2023,3509502,ESC04,A202304005,C2,2 ano,Publica,Presente,Preenchido,Sim,773,1.0
+2023,3509502,ESC04,A202304006,C3,2 ano,Publica,Presente,Preenchido,Sim,792,1.0
+2023,3509502,ESC04,A202304007,C4,2 ano,Publica,Presente,Preenchido,Sim,811,1.0
+2023,3509502,ESC04,A202304008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2024,3509502,ESC04,A202404001,C2,2 ano,Publica,Presente,Preenchido,Nao,711,1.0
+2024,3509502,ESC04,A202404002,C3,2 ano,Publica,Presente,Preenchido,Nao,730,1.0
+2024,3509502,ESC04,A202404003,C4,2 ano,Publica,Presente,Preenchido,Sim,749,1.0
+2024,3509502,ESC04,A202404004,C1,2 ano,Publica,Presente,Preenchido,Sim,768,1.0
+2024,3509502,ESC04,A202404005,C2,2 ano,Publica,Presente,Preenchido,Sim,787,1.0
+2024,3509502,ESC04,A202404006,C3,2 ano,Publica,Presente,Preenchido,Sim,806,1.0
+2024,3509502,ESC04,A202404007,C4,2 ano,Publica,Presente,Preenchido,Sim,825,1.0
+2024,3509502,ESC04,A202404008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2023,4106902,ESC05,A202305001,C2,2 ano,Publica,Presente,Preenchido,Nao,699,1.0
+2023,4106902,ESC05,A202305002,C3,2 ano,Publica,Presente,Preenchido,Nao,718,1.0
+2023,4106902,ESC05,A202305003,C4,2 ano,Publica,Presente,Preenchido,Nao,737,1.0
+2023,4106902,ESC05,A202305004,C1,2 ano,Publica,Presente,Preenchido,Sim,756,1.0
+2023,4106902,ESC05,A202305005,C2,2 ano,Publica,Presente,Preenchido,Sim,775,1.0
+2023,4106902,ESC05,A202305006,C3,2 ano,Publica,Presente,Preenchido,Sim,794,1.0
+2023,4106902,ESC05,A202305007,C4,2 ano,Publica,Presente,Preenchido,Sim,813,1.0
+2023,4106902,ESC05,A202305008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2024,4106902,ESC05,A202405001,C2,2 ano,Publica,Presente,Preenchido,Nao,713,1.0
+2024,4106902,ESC05,A202405002,C3,2 ano,Publica,Presente,Preenchido,Nao,732,1.0
+2024,4106902,ESC05,A202405003,C4,2 ano,Publica,Presente,Preenchido,Sim,751,1.0
+2024,4106902,ESC05,A202405004,C1,2 ano,Publica,Presente,Preenchido,Sim,770,1.0
+2024,4106902,ESC05,A202405005,C2,2 ano,Publica,Presente,Preenchido,Sim,789,1.0
+2024,4106902,ESC05,A202405006,C3,2 ano,Publica,Presente,Preenchido,Sim,808,1.0
+2024,4106902,ESC05,A202405007,C4,2 ano,Publica,Presente,Preenchido,Sim,827,1.0
+2024,4106902,ESC05,A202405008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2023,4113700,ESC06,A202306001,C2,2 ano,Publica,Presente,Preenchido,Nao,701,1.0
+2023,4113700,ESC06,A202306002,C3,2 ano,Publica,Presente,Preenchido,Nao,720,1.0
+2023,4113700,ESC06,A202306003,C4,2 ano,Publica,Presente,Preenchido,Nao,739,1.0
+2023,4113700,ESC06,A202306004,C1,2 ano,Publica,Presente,Preenchido,Sim,758,1.0
+2023,4113700,ESC06,A202306005,C2,2 ano,Publica,Presente,Preenchido,Sim,777,1.0
+2023,4113700,ESC06,A202306006,C3,2 ano,Publica,Presente,Preenchido,Sim,796,1.0
+2023,4113700,ESC06,A202306007,C4,2 ano,Publica,Presente,Preenchido,Sim,815,1.0
+2023,4113700,ESC06,A202306008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0
+2024,4113700,ESC06,A202406001,C2,2 ano,Publica,Presente,Preenchido,Nao,715,1.0
+2024,4113700,ESC06,A202406002,C3,2 ano,Publica,Presente,Preenchido,Nao,734,1.0
+2024,4113700,ESC06,A202406003,C4,2 ano,Publica,Presente,Preenchido,Sim,753,1.0
+2024,4113700,ESC06,A202406004,C1,2 ano,Publica,Presente,Preenchido,Sim,772,1.0
+2024,4113700,ESC06,A202406005,C2,2 ano,Publica,Presente,Preenchido,Sim,791,1.0
+2024,4113700,ESC06,A202406006,C3,2 ano,Publica,Presente,Preenchido,Sim,810,1.0
+2024,4113700,ESC06,A202406007,C4,2 ano,Publica,Presente,Preenchido,Sim,829,1.0
+2024,4113700,ESC06,A202406008,C1,2 ano,Publica,Ausente,Nao preenchido,Nao,,1.0

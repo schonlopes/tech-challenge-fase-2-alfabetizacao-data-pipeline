@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alfabetizacao-data-pipeline"
+version = "1.0.0"
+description = "Pipeline hibrido Bronze/Silver/Gold para analise da alfabetizacao no Brasil"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb>=1.4.0,<2.0",
+]
+
+[project.optional-dependencies]
+cloud = [
+  "google-cloud-bigquery>=3.38.0,<4.0",
+  "google-cloud-pubsub>=2.33.0,<3.0",
+]
+
+[project.scripts]
+alfabetizacao-pipeline = "alfabetizacao_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
