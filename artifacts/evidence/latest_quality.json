@@ -1,6 +1,6 @@
 {
-  "run_id": "demo-002",
-  "generated_at": "2026-08-26T21:29:04.646362+00:00",
+  "run_id": "local-final-readiness",
+  "generated_at": "2026-08-27T19:30:11.300297+00:00",
   "status": "PASS",
   "score_pct": 100.0,
   "summary": {

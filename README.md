@@ -247,9 +247,9 @@ A CI repete os testes e um smoke test em cada push/PR.
 
 O repositório contém commits separados e merges de branches de feature. O
 template de pull request exige evidências, avaliação de risco e rollback. O
-histórico, as branches e o fluxo de publicação estão documentados em
-[Governança Git](docs/git_workflow.md). A PR remota deve ser aberta no
-GitHub/GitLab antes da integração final na `main`.
+histórico, as branches e as PRs integradas estão documentados em
+[Governança Git](docs/git_workflow.md), incluindo a [PR #1](https://github.com/schonlopes/tech-challenge-fase-2-alfabetizacao-data-pipeline/pull/1)
+e a [PR #2](https://github.com/schonlopes/tech-challenge-fase-2-alfabetizacao-data-pipeline/pull/2).
 
 ## Estrutura
 

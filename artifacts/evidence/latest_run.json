@@ -1,8 +1,8 @@
 {
-  "run_id": "demo-002",
+  "run_id": "local-final-readiness",
   "source": "sample",
-  "started_at": "2026-08-26T21:29:03.032622+00:00",
-  "finished_at": "2026-08-26T21:29:04.654362+00:00",
+  "started_at": "2026-08-27T19:30:10.177304+00:00",
+  "finished_at": "2026-08-27T19:30:11.306277+00:00",
   "status": "PASS",
   "quality_score_pct": 100.0,
   "row_counts": {
@@ -33,17 +33,17 @@
     }
   },
   "storage_bytes": {
-    "bronze": 82360,
-    "bronze_stream": 13702,
-    "silver": 46595,
-    "gold": 29146
+    "bronze": 124342,
+    "bronze_stream": 20555,
+    "silver": 47424,
+    "gold": 29213
   },
   "timings": {
-    "batch_bronze_seconds": 0.355,
-    "stream_microbatch_seconds": 0.091,
-    "silver_seconds": 0.459,
-    "gold_seconds": 0.363,
-    "quality_seconds": 0.353,
-    "total_seconds": 1.622
+    "batch_bronze_seconds": 0.247,
+    "stream_microbatch_seconds": 0.06,
+    "silver_seconds": 0.395,
+    "gold_seconds": 0.22,
+    "quality_seconds": 0.206,
+    "total_seconds": 1.129
   }
 }

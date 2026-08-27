@@ -1,14 +1,14 @@
 # Checklist de entrega e implantação
 
-## Antes de publicar o repositório
+## Antes da submissão acadêmica
 
 - [ ] Confirmar se a instituição exige nomes e RMs na capa dos slides.
 - [ ] Revisar o vídeo e confirmar duração menor ou igual a 5 minutos.
 - [ ] Confirmar ausência de `.env`, chaves JSON e `terraform.tfstate`.
-- [ ] Executar `python -m unittest discover -s tests -v`.
-- [ ] Executar `run-all` e verificar `status=PASS`.
-- [ ] Conferir `git log --graph --oneline --all`.
-- [ ] Criar o repositório remoto e abrir PR a partir de uma branch de feature.
+- [x] Executar `python -m unittest discover -s tests -v`.
+- [x] Executar `run-all` e verificar `status=PASS`.
+- [x] Conferir `git log --graph --oneline --all`.
+- [x] Publicar o repositório remoto e integrar PRs de feature na `main`.
 
 ## Antes do Terraform
 
@@ -35,7 +35,7 @@
 
 ## Evidência final para a banca
 
-- [ ] URL do repositório acessível.
+- [x] URL do repositório acessível.
 - [ ] README renderizando Mermaid corretamente.
 - [ ] Link ou arquivo do vídeo acessível.
 - [ ] Relatório `latest_quality.json` anexado/visível.
