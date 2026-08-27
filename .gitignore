@@ -26,3 +26,10 @@ artifacts/executive/_rendered/
 artifacts/executive/_audio/
 artifacts/executive/_build/
 artifacts/executive/*.inspect.ndjson
+
+# Materiais de apresentação e vídeo são entregues separadamente, não no Git.
+artifacts/executive/tech_challenge_fase_2_alfabetizacao.pptx
+artifacts/executive/tech_challenge_fase_2_alfabetizacao_revisada.pptx
+artifacts/executive/video_executivo_tech_challenge_fase_2.mp4
+artifacts/executive/roteiro_video_executivo_ate_5_min.md
+docs/executive_video_script.md
