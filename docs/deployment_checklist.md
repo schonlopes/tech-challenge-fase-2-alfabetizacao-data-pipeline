@@ -2,7 +2,7 @@
 
 ## Antes de publicar o repositório
 
-- [ ] Substituir “Nome / RM” nos slides.
+- [ ] Confirmar se a instituição exige nomes e RMs na capa dos slides.
 - [ ] Revisar o vídeo e confirmar duração menor ou igual a 5 minutos.
 - [ ] Confirmar ausência de `.env`, chaves JSON e `terraform.tfstate`.
 - [ ] Executar `python -m unittest discover -s tests -v`.

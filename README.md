@@ -14,15 +14,15 @@ da construção é **2023–2024**.
 
 | Item | Entrega | Estado |
 |---|---|---|
-| Pipeline batch | Seis tabelas, Bronze append-only | Executado localmente |
-| Streaming | JSONL com checkpoint e Pub/Sub → BigQuery | Local validado; cloud provisionável |
-| Bronze / Silver / Gold | Parquet ZSTD local; BigQuery particionado na nuvem | Validado |
-| Qualidade | 35 verificações no ensaio local | **PASS — 100%** |
+| Pipeline batch | Seis tabelas, Bronze append-only | Executado no primeiro ciclo GCP |
+| Streaming | JSONL com checkpoint e Pub/Sub → BigQuery | Validado no GCP com evento canário |
+| Bronze / Silver / Gold | Parquet ZSTD local; BigQuery particionado na nuvem | Validado no GCP |
+| Qualidade | Sete regras no ciclo GCP, além do ensaio local | **PASS — 7 aprovadas, 0 falhas** |
 | Observabilidade | Manifestos, métricas, alerta de backlog, DLQ e runbook | Entregue |
 | FinOps | Partição, cluster, Parquet, lifecycle e budget | Entregue |
-| Infraestrutura | Terraform para Google Cloud | Sintaxe validada; não aplicada sem credenciais |
+| Infraestrutura | Terraform para Google Cloud | Aplicada e validada no GCP |
 | Testes | 6 testes unitários/integração | **PASS** |
-| Material executivo | Slides, roteiro e vídeo de até 5 minutos | Entregues separadamente, fora do Git |
+| Material executivo | Slides, roteiro e vídeo | Mantidos localmente e enviados separadamente |
 
 Evidências reproduzíveis: [execução mais recente](artifacts/evidence/latest_run.json),
 [qualidade](artifacts/evidence/latest_quality.json) e
@@ -246,8 +246,10 @@ checkpoint do streaming, referências Terraform/SQL e ausência de credenciais.
 A CI repete os testes e um smoke test em cada push/PR.
 
 O repositório contém commits separados e merges de branches de feature. O
-template de pull request exige evidências, avaliação de risco e rollback. Nenhum
-PR remoto foi inventado: para criá-lo, publique este repositório em GitHub/GitLab.
+template de pull request exige evidências, avaliação de risco e rollback. O
+histórico, as branches e o fluxo de publicação estão documentados em
+[Governança Git](docs/git_workflow.md). A PR remota deve ser aberta no
+GitHub/GitLab antes da integração final na `main`.
 
 ## Estrutura
 

@@ -1,6 +1,6 @@
-## Objetivo
+## Objetivo e requisito atendido
 
-Descreva a mudanca e o requisito do Tech Challenge atendido.
+Descreva a mudança, o requisito do Tech Challenge atendido e o resultado esperado.
 
 ## Evidencias
 
@@ -10,7 +10,11 @@ Descreva a mudanca e o requisito do Tech Challenge atendido.
 - [ ] Documentacao/diagrama atualizados
 - [ ] Impacto de custo e seguranca revisado
 
+## Decisões e revisão
+
+Descreva as decisões técnicas relevantes. Quando aplicável, registre aqui ou
+nos comentários da PR a justificativa da abordagem escolhida.
+
 ## Risco e rollback
 
 Descreva riscos, compatibilidade com contratos e como reverter com seguranca.
-
