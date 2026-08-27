@@ -22,7 +22,7 @@ da construção é **2023–2024**.
 | FinOps | Partição, cluster, Parquet, lifecycle e budget | Entregue |
 | Infraestrutura | Terraform para Google Cloud | Sintaxe validada; não aplicada sem credenciais |
 | Testes | 6 testes unitários/integração | **PASS** |
-| Material executivo | Slides, roteiro e vídeo de até 5 minutos | Entregue em `artifacts/executive` |
+| Material executivo | Slides, roteiro e vídeo de até 5 minutos | Entregues separadamente, fora do Git |
 
 Evidências reproduzíveis: [execução mais recente](artifacts/evidence/latest_run.json),
 [qualidade](artifacts/evidence/latest_quality.json) e
