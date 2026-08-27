@@ -202,20 +202,20 @@ terraform plan
 terraform apply
 ```
 
-O ambiente foi implantado no projeto GCP `tech-challenge-fase-2-506814` em
-27/08/2026. Foram criados os datasets Bronze, Silver, Gold e Monitoring, bucket
-GCS, tópicos/assinatura Pub/Sub com DLQ, tabela de streaming, IAM, métricas de
-logs e as consultas agendadas Bronze → Silver → Gold, qualidade e exportação
-Parquet. A evidência e as verificações ainda pendentes do primeiro ciclo estão
-em [cloud_deployment_status.md](docs/cloud_deployment_status.md).
+O ambiente foi implantado e validado no projeto GCP
+`tech-challenge-fase-2-506814` em 27/08/2026. Foram criados os datasets Bronze,
+Silver, Gold e Monitoring, bucket GCS, tópicos/assinatura Pub/Sub com DLQ,
+tabela de streaming, IAM, métricas de logs e as consultas agendadas Bronze →
+Silver → Gold, qualidade e exportação Parquet. O primeiro ciclo controlado
+concluiu as 19 consultas; a qualidade registrou 7 verificações aprovadas e 0
+falhas. Veja a [evidência da implantação](docs/cloud_deployment_status.md).
 
 ## FinOps
 
 O cenário de referência (450 GiB consultados/mês, 25 GiB ativos no BigQuery,
 1 GiB de eventos e 10 GiB em GCS) estima **menos de US$ 1/mês**, considerando as
-franquias vigentes e antes de impostos/câmbio. O ambiente foi configurado para
-criar um budget de R$ 10; sua criação deve ser concluída no próximo `terraform
-apply`, pois a credencial local encontrou uma limitação de cota da API de budgets.
+franquias vigentes e antes de impostos/câmbio. Um budget de **R$ 10** foi criado
+para o projeto, com limiares de 50%, 80% e 100%.
 
 Controles implementados:
 

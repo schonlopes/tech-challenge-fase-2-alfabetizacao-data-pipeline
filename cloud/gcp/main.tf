@@ -130,10 +130,10 @@ resource "google_project_iam_member" "pipeline_roles" {
   member  = "serviceAccount:${google_service_account.pipeline.email}"
 }
 
-resource "google_project_iam_member" "transfer_impersonation" {
-  project = var.project_id
-  role    = "roles/iam.serviceAccountTokenCreator"
-  member  = "serviceAccount:service-${data.google_project.current.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
+resource "google_service_account_iam_member" "transfer_impersonation" {
+  service_account_id = google_service_account.pipeline.name
+  role               = "roles/iam.serviceAccountTokenCreator"
+  member             = "serviceAccount:service-${data.google_project.current.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
 
   depends_on = [google_project_service.apis]
 }
@@ -141,12 +141,11 @@ resource "google_project_iam_member" "transfer_impersonation" {
 resource "google_bigquery_data_transfer_config" "bronze" {
   for_each = local.bronze_queries
 
-  display_name           = "alfabetizacao-bronze-${each.key}"
-  location               = var.bigquery_location
-  data_source_id         = "scheduled_query"
-  schedule               = "every day 02:00"
-  service_account_name   = google_service_account.pipeline.email
-  destination_dataset_id = google_bigquery_dataset.bronze.dataset_id
+  display_name         = "alfabetizacao-bronze-${each.key}"
+  location             = var.bigquery_location
+  data_source_id       = "scheduled_query"
+  schedule             = "every day 02:00"
+  service_account_name = google_service_account.pipeline.email
   params = {
     query = replace(file("${path.module}/sql/${each.value}"), "__PROJECT_ID__", var.project_id)
   }
@@ -154,19 +153,18 @@ resource "google_bigquery_data_transfer_config" "bronze" {
   depends_on = [
     google_project_service.apis,
     google_project_iam_member.pipeline_roles,
-    google_project_iam_member.transfer_impersonation,
+    google_service_account_iam_member.transfer_impersonation,
   ]
 }
 
 resource "google_bigquery_data_transfer_config" "silver" {
   for_each = local.silver_queries
 
-  display_name           = "alfabetizacao-silver-${each.key}"
-  location               = var.bigquery_location
-  data_source_id         = "scheduled_query"
-  schedule               = "every day 03:00"
-  service_account_name   = google_service_account.pipeline.email
-  destination_dataset_id = google_bigquery_dataset.silver.dataset_id
+  display_name         = "alfabetizacao-silver-${each.key}"
+  location             = var.bigquery_location
+  data_source_id       = "scheduled_query"
+  schedule             = "every day 03:00"
+  service_account_name = google_service_account.pipeline.email
   params = {
     query = replace(file("${path.module}/sql/${each.value}"), "__PROJECT_ID__", var.project_id)
   }
@@ -177,12 +175,11 @@ resource "google_bigquery_data_transfer_config" "silver" {
 resource "google_bigquery_data_transfer_config" "gold" {
   for_each = local.gold_queries
 
-  display_name           = "alfabetizacao-gold-${each.key}"
-  location               = var.bigquery_location
-  data_source_id         = "scheduled_query"
-  schedule               = "every day 04:00"
-  service_account_name   = google_service_account.pipeline.email
-  destination_dataset_id = google_bigquery_dataset.gold.dataset_id
+  display_name         = "alfabetizacao-gold-${each.key}"
+  location             = var.bigquery_location
+  data_source_id       = "scheduled_query"
+  schedule             = "every day 04:00"
+  service_account_name = google_service_account.pipeline.email
   params = {
     query = replace(file("${path.module}/sql/${each.value}"), "__PROJECT_ID__", var.project_id)
   }
@@ -191,12 +188,11 @@ resource "google_bigquery_data_transfer_config" "gold" {
 }
 
 resource "google_bigquery_data_transfer_config" "quality" {
-  display_name           = "alfabetizacao-quality"
-  location               = var.bigquery_location
-  data_source_id         = "scheduled_query"
-  schedule               = "every day 05:00"
-  service_account_name   = google_service_account.pipeline.email
-  destination_dataset_id = google_bigquery_dataset.monitoring.dataset_id
+  display_name         = "alfabetizacao-quality"
+  location             = var.bigquery_location
+  data_source_id       = "scheduled_query"
+  schedule             = "every day 05:00"
+  service_account_name = google_service_account.pipeline.email
   params = {
     query = replace(file("${path.module}/sql/quality_checks.sql"), "__PROJECT_ID__", var.project_id)
   }
@@ -205,12 +201,11 @@ resource "google_bigquery_data_transfer_config" "quality" {
 }
 
 resource "google_bigquery_data_transfer_config" "export_parquet" {
-  display_name           = "alfabetizacao-export-gold-parquet"
-  location               = var.bigquery_location
-  data_source_id         = "scheduled_query"
-  schedule               = "every day 04:30"
-  service_account_name   = google_service_account.pipeline.email
-  destination_dataset_id = google_bigquery_dataset.gold.dataset_id
+  display_name         = "alfabetizacao-export-gold-parquet"
+  location             = var.bigquery_location
+  data_source_id       = "scheduled_query"
+  schedule             = "every day 04:30"
+  service_account_name = google_service_account.pipeline.email
   params = {
     query = replace(
       replace(file("${path.module}/sql/export_gold_parquet.sql"), "__PROJECT_ID__", var.project_id),

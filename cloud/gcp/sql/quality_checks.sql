@@ -18,7 +18,7 @@ INSERT INTO `__PROJECT_ID__.alfabetizacao_monitoring.quality_results`
 WITH checks AS (
   SELECT 'municipio_unique_key' AS check_name, 'silver' AS layer, 'municipio' AS table_name,
          'critical' AS severity,
-         COUNT(*) - COUNT(DISTINCT STRUCT(ano,id_municipio,serie,rede)) AS observed,
+         COUNT(*) - COUNT(DISTINCT TO_JSON_STRING(STRUCT(ano,id_municipio,serie,rede))) AS observed,
          '= 0' AS expectation
   FROM `__PROJECT_ID__.alfabetizacao_silver.municipio`
   UNION ALL
@@ -41,7 +41,7 @@ WITH checks AS (
   FROM `__PROJECT_ID__.alfabetizacao_silver.alunos`
   UNION ALL
   SELECT 'gold_unique_key','gold','indicador_municipio','critical',
-         COUNT(*) - COUNT(DISTINCT STRUCT(ano,id_municipio,serie,rede)), '= 0'
+         COUNT(*) - COUNT(DISTINCT TO_JSON_STRING(STRUCT(ano,id_municipio,serie,rede))), '= 0'
   FROM `__PROJECT_ID__.alfabetizacao_gold.indicador_municipio`
   UNION ALL
   SELECT 'gold_enrichment','gold','indicador_municipio','critical',

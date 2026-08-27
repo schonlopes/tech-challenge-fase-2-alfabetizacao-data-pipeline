@@ -23,15 +23,15 @@
 
 ## Depois do apply
 
-- [ ] Executar manualmente um snapshot Bronze.
-- [ ] Validar contagem e schema das seis tabelas.
-- [ ] Executar Silver, Gold e Quality na ordem.
-- [ ] Publicar um evento canário no Pub/Sub.
-- [ ] Confirmar Bronze streaming e backlog zero.
+- [x] Executar manualmente um snapshot Bronze.
+- [x] Validar materialização das seis tabelas Bronze.
+- [x] Executar Silver, Gold e Quality na ordem.
+- [x] Publicar um evento canário no Pub/Sub.
+- [x] Confirmar Bronze streaming; canário gravado no BigQuery.
 - [ ] Enviar um evento inválido controlado e verificar DLQ.
-- [ ] Conferir export Parquet no bucket.
-- [ ] Conferir alert policy e budget.
-- [ ] Registrar custo do primeiro ciclo.
+- [x] Conferir export Parquet no bucket.
+- [x] Conferir budget; alert policy de backlog bloqueada pela política da organização.
+- [ ] Registrar custo do primeiro ciclo após a atualização da conta de faturamento.
 
 ## Evidência final para a banca
 
