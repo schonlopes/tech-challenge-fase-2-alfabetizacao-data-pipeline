@@ -40,6 +40,12 @@
 
 ## Procedimento: backlog ou DLQ
 
+Antes da implantação, valide o tratamento local com
+`alfabetizacao-pipeline validate-local-dlq --run-id dlq-validation-final`.
+O artefato `artifacts/evidence/dlq_validation.json` comprova que uma mensagem
+inválida foi isolada na DLQ local. Em produção, confirme separadamente a
+assinatura/tópico DLQ no Pub/Sub, pois a simulação local não substitui esse teste.
+
 1. Verificar se o schema JSON publicado coincide com `alunos_stream.json`.
 2. Inspecionar uma mensagem da DLQ sem copiar identificadores para canais
    externos.

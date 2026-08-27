@@ -21,7 +21,7 @@ da construção é **2023–2024**.
 | Observabilidade | Manifestos, logs, qualidade, DLQ e runbook; alerta de backlog bloqueado por política organizacional | Entregue com limitação documentada |
 | FinOps | Partição, cluster, Parquet, lifecycle e budget | Entregue |
 | Infraestrutura | Terraform para Google Cloud | Aplicada e validada no GCP |
-| Testes | 8 testes unitários/integração | **PASS** |
+| Testes | 9 testes unitários/integração | **PASS** |
 | Material executivo | Slides, roteiro e vídeo | Mantidos localmente e enviados separadamente |
 
 Evidências reproduzíveis: [execução mais recente](artifacts/evidence/latest_run.json),
@@ -169,6 +169,15 @@ alfabetizacao-pipeline simulate-stream --target pubsub \
 O `event_id` é validado dentro do microbatch e a Silver deduplica por
 `ano + id_aluno`, escolhendo a versão mais recente. Mensagens que não respeitam
 o schema permanecem no backlog e, após cinco tentativas, seguem para a DLQ.
+
+Para demonstrar localmente o fluxo de descarte sem depender de credenciais,
+execute o teste controlado abaixo. Ele envia um evento sem `event_id`, confirma
+o encaminhamento para `data/stream/dlq/alunos_invalidos.jsonl` e grava a
+evidência em `artifacts/evidence/dlq_validation.json`.
+
+```bash
+alfabetizacao-pipeline validate-local-dlq --run-id dlq-validation-final
+```
 
 ## Uso dos dados oficiais
 

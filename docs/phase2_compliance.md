@@ -13,7 +13,7 @@ grupo, nem declara como executada uma validação que ainda não foi observada.
 | Limpeza, normalização, chaves e integração | Atendido | Transformações Silver e regras de qualidade. |
 | Produtos analíticos | Atendido | Indicador municipal, meta x resultado, evolução, resumo por UF e monitoramento de stream. |
 | Qualidade | Atendido | Duplicidade, ausências, chaves, consistência, `ASSERT` cloud e evidência de 7 regras aprovadas. |
-| Monitoramento | Atendido com limitação | Logs, DQ, DLQ, métricas e runbook implantados; alerta de backlog não foi criado por política organizacional documentada. |
+| Monitoramento | Atendido com limitação | Logs, DQ, métricas, runbook e validação local automatizada da DLQ; alerta de backlog não foi criado por política organizacional documentada. |
 | FinOps | Atendido | Parquet, partição, cluster, SQL serverless, lifecycle, estimativa, budget e procedimento para custo observado. |
 | Ambiente cloud | Atendido | Infraestrutura Terraform e ciclo validado no projeto GCP `tech-challenge-fase-2-506814`. |
 | README completo | Atendido | Contexto, desafio, fonte, arquitetura, diagrama, fluxo, tecnologias, trade-offs, monitoramento, FinOps e IA. |
@@ -27,8 +27,8 @@ grupo, nem declara como executada uma validação que ainda não foi observada.
 - Revisar nomes e RMs nos slides;
 - Consultar o Billing após o fechamento do ciclo e executar `record-cloud-cost`
   com o valor visualizado, se houver acesso à conta de faturamento;
-- Se desejado, executar um evento inválido controlado para registrar a evidência
-  operacional de ponta a ponta da DLQ.
+- Quando houver janela de operação cloud, executar um evento inválido controlado
+  no Pub/Sub para complementar a evidência local de DLQ já automatizada.
 
 Esses itens não invalidam a implementação já entregue, mas dependem de ações ou
 acessos que não podem ser simulados de forma honesta dentro do repositório.

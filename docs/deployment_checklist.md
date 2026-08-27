@@ -28,7 +28,8 @@
 - [x] Executar Silver, Gold e Quality na ordem.
 - [x] Publicar um evento canário no Pub/Sub.
 - [x] Confirmar Bronze streaming; canário gravado no BigQuery.
-- [ ] Enviar um evento inválido controlado e verificar DLQ.
+- [x] Validar localmente evento inválido e evidência de DLQ (`artifacts/evidence/dlq_validation.json`).
+- [ ] Enviar um evento inválido controlado e verificar a DLQ no Pub/Sub, quando houver janela de operação cloud.
 - [x] Conferir export Parquet no bucket.
 - [x] Conferir budget; alert policy de backlog bloqueada pela política da organização.
 - [ ] Consultar o custo do primeiro ciclo no Billing e registrar com `record-cloud-cost` (procedimento em `docs/cost_observation.md`).

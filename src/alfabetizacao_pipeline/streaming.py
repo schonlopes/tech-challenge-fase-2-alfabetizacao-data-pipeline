@@ -48,6 +48,12 @@ def simulate_local(paths: ProjectPaths, count: int = 24, source_csv: str | Path 
     return len(events)
 
 
+def _append_jsonl(path: Path, records: list[dict[str, object]]) -> None:
+    with path.open("a", encoding="utf-8", newline="\n") as handle:
+        for record in records:
+            handle.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+
 def publish_pubsub(
     paths: ProjectPaths,
     project_id: str,
@@ -77,7 +83,7 @@ def publish_pubsub(
 
 
 def consume_local(paths: ProjectPaths, run_id: str) -> int:
-    """Consome apenas bytes novos do JSONL e persiste microbatch imutavel na Bronze."""
+    """Consome bytes novos; eventos inválidos são enviados à DLQ local auditável."""
     paths.ensure()
     if not paths.stream_inbox.exists():
         return 0
@@ -91,12 +97,51 @@ def consume_local(paths: ProjectPaths, run_id: str) -> int:
         return 0
 
     lines = [line for line in payload.splitlines() if line.strip()]
-    events = [json.loads(line.decode("utf-8")) for line in lines]
     required = set(CONTRACTS["alunos"].fields) | {"event_id", "event_ts", "event_date"}
-    for index, event in enumerate(events, 1):
+    events: list[dict[str, object]] = []
+    dead_letters: list[dict[str, object]] = []
+    for index, line in enumerate(lines, 1):
+        raw = line.decode("utf-8", errors="replace")
+        try:
+            event = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            dead_letters.append({
+                "run_id": run_id,
+                "line_number": index,
+                "reason": "invalid_json",
+                "detail": exc.msg,
+                "payload": raw,
+                "received_at": _utc_now().isoformat(),
+            })
+            continue
+        if not isinstance(event, dict):
+            dead_letters.append({
+                "run_id": run_id,
+                "line_number": index,
+                "reason": "invalid_payload_type",
+                "detail": "O evento deve ser um objeto JSON.",
+                "payload": raw,
+                "received_at": _utc_now().isoformat(),
+            })
+            continue
         missing = sorted(required - event.keys())
         if missing:
-            raise ValueError(f"Evento {index} invalido; campos ausentes: {missing}")
+            dead_letters.append({
+                "run_id": run_id,
+                "line_number": index,
+                "reason": "missing_required_fields",
+                "detail": ", ".join(missing),
+                "payload": event,
+                "received_at": _utc_now().isoformat(),
+            })
+            continue
+        events.append(event)
+
+    if dead_letters:
+        _append_jsonl(paths.stream_dlq, dead_letters)
+    if not events:
+        paths.stream_checkpoint.write_text(str(new_offset), encoding="utf-8")
+        return 0
 
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".jsonl", delete=False) as temp:
         temp_path = Path(temp.name)
@@ -131,3 +176,33 @@ def consume_local(paths: ProjectPaths, run_id: str) -> int:
 
     paths.stream_checkpoint.write_text(str(new_offset), encoding="utf-8")
     return len(events)
+
+
+def validate_local_dlq(paths: ProjectPaths, run_id: str) -> dict[str, object]:
+    """Publica um evento controladamente inválido e comprova seu envio à DLQ local."""
+    paths.ensure()
+    event = build_events(paths.sample / "alunos.csv", 1)[0]
+    event.pop("event_id")
+    _append_jsonl(paths.stream_inbox, [event])
+    accepted = consume_local(paths, run_id)
+
+    records = [
+        json.loads(line)
+        for line in paths.stream_dlq.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    matches = [record for record in records if record["run_id"] == run_id]
+    result = {
+        "run_id": run_id,
+        "status": "PASS" if accepted == 0 and len(matches) == 1 else "FAIL",
+        "accepted_events": accepted,
+        "dlq_events": len(matches),
+        "reason": matches[0]["reason"] if matches else None,
+        "evidence_path": str(paths.stream_dlq),
+        "validated_at": _utc_now().isoformat(),
+        "scope": "Simulação local equivalente ao encaminhamento para DLQ; não substitui a confirmação no Pub/Sub em produção.",
+    }
+    (paths.evidence / "dlq_validation.json").write_text(
+        json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    return result

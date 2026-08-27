@@ -50,6 +50,10 @@ class ProjectPaths:
         return self.root / "data" / "stream" / "checkpoints" / "alunos.offset"
 
     @property
+    def stream_dlq(self) -> Path:
+        return self.root / "data" / "stream" / "dlq" / "alunos_invalidos.jsonl"
+
+    @property
     def staging(self) -> Path:
         return self.root / "data" / "staging"
 
@@ -66,6 +70,7 @@ class ProjectPaths:
             self.gold,
             self.stream_inbox.parent,
             self.stream_checkpoint.parent,
+            self.stream_dlq.parent,
             self.staging,
             self.evidence,
         ):
@@ -83,4 +88,3 @@ class ProjectPaths:
             shutil.rmtree(target)
         target.mkdir(parents=True, exist_ok=True)
         return target
-

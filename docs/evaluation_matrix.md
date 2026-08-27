@@ -13,7 +13,7 @@
 | Validação de chaves | integridade com dimensão municipal | `quality.py` |
 | Consistência | faixa 0–100, níveis, corte 743 e taxa cruzada | `quality.py` |
 | Enriquecimento externo | diretório municipal da Base dos Dados | `silver_municipio.sql`, amostra de referência |
-| Monitoramento | manifestos, DQ, backlog, erros, DLQ e runbook | `latest_run.json`, `main.tf`, runbook |
+| Monitoramento | manifestos, DQ, backlog, erros, DLQ e runbook | `latest_run.json`, `dlq_validation.json`, `main.tf`, runbook |
 | Parquet/colunar | Parquet ZSTD local, BigQuery colunar e export Snappy | `duck.py`, `export_gold_parquet.sql` |
 | Particionamento/otimização | ano/data, clustering, projeção e materialização | SQLs Silver/Gold, FinOps |
 | Estimativa de custo | cenário, fórmula, preços e budget | `docs/finops.md`, Terraform budget |
