@@ -1,6 +1,6 @@
 {
-  "run_id": "local-final-readiness",
-  "generated_at": "2026-08-27T19:30:11.300297+00:00",
+  "run_id": "local-final-evaluation-readiness",
+  "generated_at": "2026-08-27T23:16:06.922132+00:00",
   "status": "PASS",
   "score_pct": 100.0,
   "summary": {

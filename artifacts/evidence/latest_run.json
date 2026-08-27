@@ -1,8 +1,8 @@
 {
-  "run_id": "local-final-readiness",
+  "run_id": "local-final-evaluation-readiness",
   "source": "sample",
-  "started_at": "2026-08-27T19:30:10.177304+00:00",
-  "finished_at": "2026-08-27T19:30:11.306277+00:00",
+  "started_at": "2026-08-27T23:16:05.226282+00:00",
+  "finished_at": "2026-08-27T23:16:06.934672+00:00",
   "status": "PASS",
   "quality_score_pct": 100.0,
   "row_counts": {
@@ -33,17 +33,17 @@
     }
   },
   "storage_bytes": {
-    "bronze": 124342,
-    "bronze_stream": 20555,
-    "silver": 47424,
-    "gold": 29213
+    "bronze": 166990,
+    "bronze_stream": 27408,
+    "silver": 48025,
+    "gold": 29136
   },
   "timings": {
-    "batch_bronze_seconds": 0.247,
-    "stream_microbatch_seconds": 0.06,
-    "silver_seconds": 0.395,
-    "gold_seconds": 0.22,
-    "quality_seconds": 0.206,
-    "total_seconds": 1.129
+    "batch_bronze_seconds": 0.401,
+    "stream_microbatch_seconds": 0.098,
+    "silver_seconds": 0.561,
+    "gold_seconds": 0.342,
+    "quality_seconds": 0.305,
+    "total_seconds": 1.708
   }
 }

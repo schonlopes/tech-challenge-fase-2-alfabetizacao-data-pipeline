@@ -8,6 +8,7 @@ from pathlib import Path
 
 from .batch import ingest_csv_snapshot, new_run_id
 from .bigquery_source import extract_snapshot
+from .finops import record_cloud_cost
 from .gold import build_gold
 from .paths import ProjectPaths
 from .pipeline import run_all
@@ -61,6 +62,12 @@ def build_parser() -> argparse.ArgumentParser:
     all_cmd.add_argument("--student-limit", type=int, default=0)
     all_cmd.add_argument("--events", type=int, default=24)
     all_cmd.add_argument("--run-id")
+
+    cost = sub.add_parser("record-cloud-cost", help="Registra custo real observado no Cloud Billing")
+    cost.add_argument("--period", required=True, help="Competência no formato AAAA-MM")
+    cost.add_argument("--amount-brl", type=float, required=True, help="Total exibido no Billing Reports")
+    cost.add_argument("--source", required=True, help="Origem auditável do valor, por exemplo Cloud Billing Reports")
+    cost.add_argument("--project-id", required=True, help="Projeto filtrado no relatório de faturamento")
     return parser
 
 
@@ -103,9 +110,16 @@ def main(argv: list[str] | None = None) -> int:
             stream_events=args.events,
             run_id=args.run_id,
         ))
+    elif args.command == "record-cloud-cost":
+        _print(record_cloud_cost(
+            paths,
+            period=args.period,
+            amount_brl=args.amount_brl,
+            source=args.source,
+            project_id=args.project_id,
+        ))
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

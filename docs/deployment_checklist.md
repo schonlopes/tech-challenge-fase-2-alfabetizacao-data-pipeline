@@ -31,7 +31,7 @@
 - [ ] Enviar um evento inválido controlado e verificar DLQ.
 - [x] Conferir export Parquet no bucket.
 - [x] Conferir budget; alert policy de backlog bloqueada pela política da organização.
-- [ ] Registrar custo do primeiro ciclo após a atualização da conta de faturamento.
+- [ ] Consultar o custo do primeiro ciclo no Billing e registrar com `record-cloud-cost` (procedimento em `docs/cost_observation.md`).
 
 ## Evidência final para a banca
 

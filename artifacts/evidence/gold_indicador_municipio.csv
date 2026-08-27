@@ -1,13 +1,13 @@
 ano,id_municipio,nome_municipio,sigla_uf,nome_uf,regiao,serie,rede,taxa_alfabetizacao,media_portugues,meta_ano,nivel_alfabetizacao,percentual_participacao,gap_meta_pp,status_meta,_gold_processed_at
-2023,1200203,Cruzeiro do Sul,AC,Acre,Norte,2 ano,Publica,49.0,728.2,,2,90.0,,SEM_META,2026-08-27 16:30:11.085166-03
-2023,1200401,Rio Branco,AC,Acre,Norte,2 ano,Publica,52.0,733.6,,2,89.0,,SEM_META,2026-08-27 16:30:11.085166-03
-2023,4106902,Curitiba,PR,Parana,Sul,2 ano,Publica,64.0,755.2,,3,93.0,,SEM_META,2026-08-27 16:30:11.085166-03
-2023,4113700,Londrina,PR,Parana,Sul,2 ano,Publica,61.0,749.8,,3,94.0,,SEM_META,2026-08-27 16:30:11.085166-03
-2023,3509502,Campinas,SP,Sao Paulo,Sudeste,2 ano,Publica,65.0,757.0,,3,92.0,,SEM_META,2026-08-27 16:30:11.085166-03
-2023,3550308,Sao Paulo,SP,Sao Paulo,Sudeste,2 ano,Publica,62.0,751.6,,3,91.0,,SEM_META,2026-08-27 16:30:11.085166-03
-2024,1200203,Cruzeiro do Sul,AC,Acre,Norte,2 ano,Publica,54.0,737.2,56.0,2,90.0,-2.0,ATENCAO,2026-08-27 16:30:11.085166-03
-2024,1200401,Rio Branco,AC,Acre,Norte,2 ano,Publica,57.0,742.6,59.0,2,89.0,-2.0,ATENCAO,2026-08-27 16:30:11.085166-03
-2024,4106902,Curitiba,PR,Parana,Sul,2 ano,Publica,69.0,764.2,71.0,3,93.0,-2.0,ATENCAO,2026-08-27 16:30:11.085166-03
-2024,4113700,Londrina,PR,Parana,Sul,2 ano,Publica,66.0,758.8,68.0,3,94.0,-2.0,ATENCAO,2026-08-27 16:30:11.085166-03
-2024,3509502,Campinas,SP,Sao Paulo,Sudeste,2 ano,Publica,70.0,766.0,72.0,3,92.0,-2.0,ATENCAO,2026-08-27 16:30:11.085166-03
-2024,3550308,Sao Paulo,SP,Sao Paulo,Sudeste,2 ano,Publica,67.0,760.6,69.0,3,91.0,-2.0,ATENCAO,2026-08-27 16:30:11.085166-03
+2023,1200203,Cruzeiro do Sul,AC,Acre,Norte,2 ano,Publica,49.0,728.2,,2,90.0,,SEM_META,2026-08-27 20:16:06.604955-03
+2023,1200401,Rio Branco,AC,Acre,Norte,2 ano,Publica,52.0,733.6,,2,89.0,,SEM_META,2026-08-27 20:16:06.604955-03
+2023,4106902,Curitiba,PR,Parana,Sul,2 ano,Publica,64.0,755.2,,3,93.0,,SEM_META,2026-08-27 20:16:06.604955-03
+2023,4113700,Londrina,PR,Parana,Sul,2 ano,Publica,61.0,749.8,,3,94.0,,SEM_META,2026-08-27 20:16:06.604955-03
+2023,3509502,Campinas,SP,Sao Paulo,Sudeste,2 ano,Publica,65.0,757.0,,3,92.0,,SEM_META,2026-08-27 20:16:06.604955-03
+2023,3550308,Sao Paulo,SP,Sao Paulo,Sudeste,2 ano,Publica,62.0,751.6,,3,91.0,,SEM_META,2026-08-27 20:16:06.604955-03
+2024,1200203,Cruzeiro do Sul,AC,Acre,Norte,2 ano,Publica,54.0,737.2,56.0,2,90.0,-2.0,ATENCAO,2026-08-27 20:16:06.604955-03
+2024,1200401,Rio Branco,AC,Acre,Norte,2 ano,Publica,57.0,742.6,59.0,2,89.0,-2.0,ATENCAO,2026-08-27 20:16:06.604955-03
+2024,4106902,Curitiba,PR,Parana,Sul,2 ano,Publica,69.0,764.2,71.0,3,93.0,-2.0,ATENCAO,2026-08-27 20:16:06.604955-03
+2024,4113700,Londrina,PR,Parana,Sul,2 ano,Publica,66.0,758.8,68.0,3,94.0,-2.0,ATENCAO,2026-08-27 20:16:06.604955-03
+2024,3509502,Campinas,SP,Sao Paulo,Sudeste,2 ano,Publica,70.0,766.0,72.0,3,92.0,-2.0,ATENCAO,2026-08-27 20:16:06.604955-03
+2024,3550308,Sao Paulo,SP,Sao Paulo,Sudeste,2 ano,Publica,67.0,760.6,69.0,3,91.0,-2.0,ATENCAO,2026-08-27 20:16:06.604955-03

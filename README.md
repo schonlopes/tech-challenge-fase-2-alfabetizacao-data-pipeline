@@ -18,10 +18,10 @@ da construção é **2023–2024**.
 | Streaming | JSONL com checkpoint e Pub/Sub → BigQuery | Validado no GCP com evento canário |
 | Bronze / Silver / Gold | Parquet ZSTD local; BigQuery particionado na nuvem | Validado no GCP |
 | Qualidade | Sete regras no ciclo GCP, além do ensaio local | **PASS — 7 aprovadas, 0 falhas** |
-| Observabilidade | Manifestos, métricas, alerta de backlog, DLQ e runbook | Entregue |
+| Observabilidade | Manifestos, logs, qualidade, DLQ e runbook; alerta de backlog bloqueado por política organizacional | Entregue com limitação documentada |
 | FinOps | Partição, cluster, Parquet, lifecycle e budget | Entregue |
 | Infraestrutura | Terraform para Google Cloud | Aplicada e validada no GCP |
-| Testes | 6 testes unitários/integração | **PASS** |
+| Testes | 8 testes unitários/integração | **PASS** |
 | Material executivo | Slides, roteiro e vídeo | Mantidos localmente e enviados separadamente |
 
 Evidências reproduzíveis: [execução mais recente](artifacts/evidence/latest_run.json),
@@ -227,6 +227,8 @@ Controles implementados:
 - labels, relatório de bytes e orçamento com alertas progressivos.
 
 Hipóteses, fórmulas e preços consultados: [FinOps](docs/finops.md).
+O procedimento para registrar o custo real de cada ciclo, sem inserir valores
+fictícios, está em [evidência de custo](docs/cost_observation.md).
 
 ## Observabilidade e operação
 
@@ -282,6 +284,23 @@ alfabetizacao-data-pipeline/
 
 Registro formal: [ADR-001](docs/decisions/ADR-001-platform.md).
 
+## Aplicação analítica e IA
+
+A camada Gold é uma base confiável para decisões educacionais e para projetos de
+IA, sempre com validação humana e sem tentar reidentificar estudantes:
+
+- **Predição:** usar `indicador_municipio`, `evolucao_municipio` e
+  `meta_resultado_municipio` para estimar risco de não atingimento de meta e
+  priorizar apoio técnico aos municípios;
+- **Desigualdade educacional:** comparar taxa, participação, rede, UF e evolução
+  anual para localizar lacunas territoriais e acompanhar sua redução;
+- **Políticas públicas baseadas em dados:** simular cenários de metas, selecionar
+  territórios prioritários e medir o resultado das intervenções ao longo do tempo.
+
+Modelos devem usar separação temporal, avaliação por território, monitoramento
+de drift e explicabilidade. Os resultados servem de apoio à decisão pública, não
+de decisão automática sobre estudantes, escolas ou municípios.
+
 ## Segurança, LGPD e IA
 
 Os dados oficiais identificam escolas/alunos por códigos fictícios ou
@@ -304,4 +323,5 @@ oficiais e documentação primária. Veja a [declaração de uso de IA](docs/ai_
 ## Matriz de atendimento
 
 A correspondência entre cada requisito do enunciado e sua evidência está em
-[docs/evaluation_matrix.md](docs/evaluation_matrix.md).
+[docs/evaluation_matrix.md](docs/evaluation_matrix.md). Para a revisão final
+antes da submissão, use também a [prontidão da Fase 2](docs/phase2_compliance.md).

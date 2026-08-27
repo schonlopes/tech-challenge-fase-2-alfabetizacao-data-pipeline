@@ -17,13 +17,15 @@
 | Parquet/colunar | Parquet ZSTD local, BigQuery colunar e export Snappy | `duck.py`, `export_gold_parquet.sql` |
 | Particionamento/otimização | ano/data, clustering, projeção e materialização | SQLs Silver/Gold, FinOps |
 | Estimativa de custo | cenário, fórmula, preços e budget | `docs/finops.md`, Terraform budget |
+| Custo observado | registro auditável de competência, valor, fonte e projeto após consulta ao Billing | `finops.py`, `cost_observation.md` |
 | Execução em nuvem | infraestrutura GCP implantada e ciclo completo validado | `cloud/gcp`, `cloud_deployment_status.md` |
 | Diagrama e fluxo | diagramas Mermaid lógico/físico | README, `architecture.md` |
 | Trade-offs | ADR e README | `ADR-001-platform.md` |
 | Uso de IA | declaração explícita e limites | `ai_usage.md` |
+| Aplicação em IA | predição, desigualdade e políticas públicas com limites de uso | README, seção “Aplicação analítica e IA” |
 | Código e organização | pacote Python, SQL, Terraform, testes e CI | estrutura do repositório |
 | Histórico Git | commits e merges de branches de feature | `git log --graph --oneline --all` |
-| Vídeo executivo | slides, roteiro e vídeo de até 5 minutos | material enviado separadamente na submissão |
+| Vídeo executivo | slides, roteiro e vídeo de até 5 minutos | material enviado separadamente na submissão; conferir checklist final |
 
 ## Pontos que dependem do responsável pela submissão
 

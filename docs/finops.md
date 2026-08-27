@@ -65,6 +65,14 @@ GCS Standard     = 10 × 0,000035616 × 730               ≈ US$ 0,26
 - `latest_run.json` registra bytes físicos locais por camada;
 - antes de consultas ad hoc, usar dry-run e `maximum_bytes_billed`.
 
+## Custo observado
+
+A estimativa é complementar ao custo real. O procedimento e o comando local
+para registrar o valor consultado no Cloud Billing estão em
+[evidência de custo](cost_observation.md). O registro exige competência, valor,
+fonte e projeto, evitando que valores estimados sejam apresentados como cobrança
+real.
+
 ## Limites e gatilhos de evolução
 
 | Sinal | Ação recomendada |
