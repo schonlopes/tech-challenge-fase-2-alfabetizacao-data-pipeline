@@ -59,7 +59,7 @@ GCS Standard     = 10 × 0,000035616 × 730               ≈ US$ 0,26
 
 ### Governança financeira
 
-- budget opcional de R$ 100 com alertas em 50%, 80% e 100%;
+- budget de R$ 10 configurado no projeto GCP, com alertas em 50%, 80% e 100%;
 - uma service account exclusiva facilita atribuição de custo;
 - nomes de agendamento e labels do extrator permitem filtrar faturamento;
 - `latest_run.json` registra bytes físicos locais por camada;
