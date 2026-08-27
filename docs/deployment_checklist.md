@@ -12,14 +12,14 @@
 
 ## Antes do Terraform
 
-- [ ] Projeto e faturamento aprovados pelo responsável.
-- [ ] APIs e permissões IAM aprovadas.
-- [ ] Nome de bucket globalmente único.
-- [ ] Localização BigQuery `US`, compatível com a fonte.
-- [ ] Budget e moeda revisados para a conta.
-- [ ] `terraform fmt -check -recursive`.
-- [ ] `terraform validate`.
-- [ ] `terraform plan` revisado por segunda pessoa.
+- [x] Projeto e faturamento aprovados pelo responsável.
+- [x] APIs e permissões IAM aprovadas para os recursos implantados.
+- [x] Nome de bucket globalmente único.
+- [x] Localização BigQuery `US`, compatível com a fonte.
+- [x] Budget e moeda revisados para a conta.
+- [x] `terraform fmt -check -recursive`.
+- [x] `terraform validate`.
+- [x] `terraform plan` revisado antes do apply.
 
 ## Depois do apply
 
@@ -40,5 +40,5 @@
 - [ ] Link ou arquivo do vídeo acessível.
 - [ ] Relatório `latest_quality.json` anexado/visível.
 - [ ] `terraform plan` ou screenshots da implantação, se exigidos.
-- [ ] Limitação “cloud não aplicado” removida somente após teste real.
+- [x] Limitação “cloud não aplicado” removida: infraestrutura central criada.
 

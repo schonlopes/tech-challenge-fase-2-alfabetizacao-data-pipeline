@@ -22,7 +22,7 @@ variable "data_bucket_name" {
 }
 
 variable "billing_account_id" {
-  description = "Opcional: billingAccounts/XXXXXX-XXXXXX-XXXXXX para criar budget."
+  description = "Opcional: ID XXXXXX-XXXXXX-XXXXXX da conta de faturamento para criar budget."
   type        = string
   default     = ""
 }

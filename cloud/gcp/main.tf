@@ -8,34 +8,33 @@ locals {
     "bigquerydatatransfer.googleapis.com",
     "cloudbilling.googleapis.com",
     "billingbudgets.googleapis.com",
-    "cloudmonitoring.googleapis.com",
     "logging.googleapis.com",
     "pubsub.googleapis.com",
   ])
 
   bronze_queries = {
-    uf                            = "bronze_uf.sql"
+    uf                           = "bronze_uf.sql"
     meta_alfabetizacao_brasil    = "bronze_meta_brasil.sql"
     meta_alfabetizacao_uf        = "bronze_meta_uf.sql"
     meta_alfabetizacao_municipio = "bronze_meta_municipio.sql"
-    municipio                     = "bronze_municipio.sql"
-    alunos                        = "bronze_alunos.sql"
+    municipio                    = "bronze_municipio.sql"
+    alunos                       = "bronze_alunos.sql"
   }
 
   silver_queries = {
-    uf                            = "silver_uf.sql"
+    uf                           = "silver_uf.sql"
     meta_alfabetizacao_brasil    = "silver_meta_brasil.sql"
     meta_alfabetizacao_uf        = "silver_meta_uf.sql"
     meta_alfabetizacao_municipio = "silver_meta_municipio.sql"
-    municipio                     = "silver_municipio.sql"
-    alunos                        = "silver_alunos.sql"
+    municipio                    = "silver_municipio.sql"
+    alunos                       = "silver_alunos.sql"
   }
 
   gold_queries = {
     indicador_municipio      = "gold_indicador_municipio.sql"
     meta_resultado_municipio = "gold_meta_resultado_municipio.sql"
     evolucao_municipio       = "gold_evolucao_municipio.sql"
-    resumo_uf                 = "gold_resumo_uf.sql"
+    resumo_uf                = "gold_resumo_uf.sql"
     monitoramento_stream     = "gold_monitoramento_stream.sql"
   }
 }
@@ -155,7 +154,7 @@ resource "google_bigquery_data_transfer_config" "bronze" {
   depends_on = [
     google_project_service.apis,
     google_project_iam_member.pipeline_roles,
-    google_service_account_iam_member.transfer_impersonation,
+    google_project_iam_member.transfer_impersonation,
   ]
 }
 
@@ -311,34 +310,6 @@ resource "google_pubsub_topic_iam_member" "pipeline_publisher" {
   topic  = google_pubsub_topic.alunos.name
   role   = "roles/pubsub.publisher"
   member = "serviceAccount:${google_service_account.pipeline.email}"
-}
-
-resource "google_monitoring_alert_policy" "stream_backlog" {
-  display_name = "Alfabetizacao - backlog de streaming"
-  combiner     = "OR"
-
-  conditions {
-    display_name = "Mais de 1000 mensagens por 5 minutos"
-    condition_threshold {
-      filter          = "resource.type = \"pubsub_subscription\" AND metric.type = \"pubsub.googleapis.com/subscription/num_undelivered_messages\" AND resource.label.subscription_id = \"${google_pubsub_subscription.alunos_bigquery.name}\""
-      comparison      = "COMPARISON_GT"
-      threshold_value = 1000
-      duration        = "300s"
-
-      aggregations {
-        alignment_period   = "60s"
-        per_series_aligner = "ALIGN_MAX"
-      }
-
-      trigger {
-        count = 1
-      }
-    }
-  }
-
-  alert_strategy {
-    auto_close = "1800s"
-  }
 }
 
 resource "google_logging_metric" "pipeline_errors" {

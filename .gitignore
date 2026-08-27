@@ -18,6 +18,7 @@ cloud/gcp/.terraform/
 cloud/gcp/*.tfstate*
 cloud/gcp/.terraform.lock.hcl
 cloud/gcp/terraform.tfvars
+cloud/gcp/tfplan
 *.key.json
 
 # Artefatos temporarios da apresentacao/video.

@@ -202,16 +202,20 @@ terraform plan
 terraform apply
 ```
 
-O `apply` não foi executado nesta entrega, pois requer projeto, conta de
-faturamento e pode gerar custos. A separação entre código validado e implantação
-é intencional e está registrada no checklist de entrega.
+O ambiente foi implantado no projeto GCP `tech-challenge-fase-2-506814` em
+27/08/2026. Foram criados os datasets Bronze, Silver, Gold e Monitoring, bucket
+GCS, tópicos/assinatura Pub/Sub com DLQ, tabela de streaming, IAM, métricas de
+logs e as consultas agendadas Bronze → Silver → Gold, qualidade e exportação
+Parquet. A evidência e as verificações ainda pendentes do primeiro ciclo estão
+em [cloud_deployment_status.md](docs/cloud_deployment_status.md).
 
 ## FinOps
 
 O cenário de referência (450 GiB consultados/mês, 25 GiB ativos no BigQuery,
 1 GiB de eventos e 10 GiB em GCS) estima **menos de US$ 1/mês**, considerando as
-franquias vigentes e antes de impostos/câmbio. O Terraform cria um budget de
-R$ 100 quando `billing_account_id` é fornecido.
+franquias vigentes e antes de impostos/câmbio. O ambiente foi configurado para
+criar um budget de R$ 10; sua criação deve ser concluída no próximo `terraform
+apply`, pois a credencial local encontrou uma limitação de cota da API de budgets.
 
 Controles implementados:
 
