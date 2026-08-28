@@ -8,13 +8,14 @@ from pathlib import Path
 
 from .batch import ingest_csv_snapshot, new_run_id
 from .bigquery_source import extract_snapshot
+from .finops import record_cloud_cost
 from .gold import build_gold
 from .paths import ProjectPaths
 from .pipeline import run_all
 from .quality import run_quality
 from .sample_data import generate_sample_data
 from .silver import build_silver
-from .streaming import consume_local, publish_pubsub, simulate_local
+from .streaming import consume_local, publish_pubsub, simulate_local, validate_local_dlq
 
 
 def _print(value: object) -> None:
@@ -48,6 +49,9 @@ def build_parser() -> argparse.ArgumentParser:
     consume = sub.add_parser("consume-stream", help="Consome eventos locais novos para a Bronze")
     consume.add_argument("--run-id")
 
+    dlq = sub.add_parser("validate-local-dlq", help="Valida o encaminhamento local de evento inválido à DLQ")
+    dlq.add_argument("--run-id", default="dlq-validation")
+
     sub.add_parser("silver", help="Reconstroi a camada Silver")
     sub.add_parser("gold", help="Reconstroi a camada Gold")
 
@@ -61,6 +65,12 @@ def build_parser() -> argparse.ArgumentParser:
     all_cmd.add_argument("--student-limit", type=int, default=0)
     all_cmd.add_argument("--events", type=int, default=24)
     all_cmd.add_argument("--run-id")
+
+    cost = sub.add_parser("record-cloud-cost", help="Registra custo real observado no Cloud Billing")
+    cost.add_argument("--period", required=True, help="Competência no formato AAAA-MM")
+    cost.add_argument("--amount-brl", type=float, required=True, help="Total exibido no Billing Reports")
+    cost.add_argument("--source", required=True, help="Origem auditável do valor, por exemplo Cloud Billing Reports")
+    cost.add_argument("--project-id", required=True, help="Projeto filtrado no relatório de faturamento")
     return parser
 
 
@@ -87,6 +97,8 @@ def main(argv: list[str] | None = None) -> int:
     elif args.command == "consume-stream":
         run_id = args.run_id or new_run_id("stream")
         _print({"consumed": consume_local(paths, run_id), "run_id": run_id})
+    elif args.command == "validate-local-dlq":
+        _print(validate_local_dlq(paths, args.run_id))
     elif args.command == "silver":
         _print(build_silver(paths))
     elif args.command == "gold":
@@ -103,9 +115,16 @@ def main(argv: list[str] | None = None) -> int:
             stream_events=args.events,
             run_id=args.run_id,
         ))
+    elif args.command == "record-cloud-cost":
+        _print(record_cloud_cost(
+            paths,
+            period=args.period,
+            amount_brl=args.amount_brl,
+            source=args.source,
+            project_id=args.project_id,
+        ))
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

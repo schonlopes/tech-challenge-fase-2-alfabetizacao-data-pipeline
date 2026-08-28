@@ -8,7 +8,7 @@ from pathlib import Path
 from alfabetizacao_pipeline.paths import ProjectPaths
 from alfabetizacao_pipeline.pipeline import run_all
 from alfabetizacao_pipeline.sample_data import generate_sample_data
-from alfabetizacao_pipeline.streaming import consume_local, simulate_local
+from alfabetizacao_pipeline.streaming import consume_local, simulate_local, validate_local_dlq
 
 
 class PipelineEndToEndTest(unittest.TestCase):
@@ -35,7 +35,18 @@ class PipelineEndToEndTest(unittest.TestCase):
             self.assertEqual(5, consume_local(paths, "stream-test-1"))
             self.assertEqual(0, consume_local(paths, "stream-test-2"))
 
+    def test_invalid_stream_event_is_redirected_to_local_dlq(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            paths = ProjectPaths.from_root(temp_dir)
+            generate_sample_data(paths.sample)
+
+            result = validate_local_dlq(paths, "dlq-test")
+            evidence = json.loads((paths.evidence / "dlq_validation.json").read_text(encoding="utf-8"))
+
+            self.assertEqual("PASS", result["status"])
+            self.assertEqual(1, result["dlq_events"])
+            self.assertEqual("missing_required_fields", evidence["reason"])
+
 
 if __name__ == "__main__":
     unittest.main()
-

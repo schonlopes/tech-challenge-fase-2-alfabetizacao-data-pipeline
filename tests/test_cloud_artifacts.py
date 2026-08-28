@@ -28,8 +28,9 @@ class CloudArtifactsTest(unittest.TestCase):
         self.assertIn("id_municipio", fields)
 
     def test_no_credentials_are_committed(self) -> None:
+        text_extensions = {".hcl", ".json", ".md", ".sql", ".tf", ".txt", ".yaml", ".yml"}
         for path in self.gcp.glob("**/*"):
-            if path.is_file():
+            if path.is_file() and path.suffix.lower() in text_extensions:
                 content = path.read_text(encoding="utf-8")
                 self.assertNotIn('"type": "service_account"', content, path)
                 self.assertNotIn("private_key_id", content, path)

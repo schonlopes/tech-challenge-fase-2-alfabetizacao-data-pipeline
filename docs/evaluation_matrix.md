@@ -13,25 +13,24 @@
 | Validação de chaves | integridade com dimensão municipal | `quality.py` |
 | Consistência | faixa 0–100, níveis, corte 743 e taxa cruzada | `quality.py` |
 | Enriquecimento externo | diretório municipal da Base dos Dados | `silver_municipio.sql`, amostra de referência |
-| Monitoramento | manifestos, DQ, backlog, erros, DLQ e runbook | `latest_run.json`, `main.tf`, runbook |
+| Monitoramento | manifestos, DQ, backlog, erros, DLQ e runbook | `latest_run.json`, `dlq_validation.json`, `main.tf`, runbook |
 | Parquet/colunar | Parquet ZSTD local, BigQuery colunar e export Snappy | `duck.py`, `export_gold_parquet.sql` |
 | Particionamento/otimização | ano/data, clustering, projeção e materialização | SQLs Silver/Gold, FinOps |
 | Estimativa de custo | cenário, fórmula, preços e budget | `docs/finops.md`, Terraform budget |
-| Execução em nuvem | infraestrutura GCP completa | `cloud/gcp` |
+| Custo observado | registro auditável de competência, valor, fonte e projeto após consulta ao Billing | `finops.py`, `cost_observation.md` |
+| Execução em nuvem | infraestrutura GCP implantada e ciclo completo validado | `cloud/gcp`, `cloud_deployment_status.md` |
 | Diagrama e fluxo | diagramas Mermaid lógico/físico | README, `architecture.md` |
 | Trade-offs | ADR e README | `ADR-001-platform.md` |
 | Uso de IA | declaração explícita e limites | `ai_usage.md` |
+| Aplicação em IA | predição, desigualdade e políticas públicas com limites de uso | README, seção “Aplicação analítica e IA” |
 | Código e organização | pacote Python, SQL, Terraform, testes e CI | estrutura do repositório |
 | Histórico Git | commits e merges de branches de feature | `git log --graph --oneline --all` |
-| Video executivo | slides, roteiro e MP4 de até 5 minutos | `artifacts/executive` |
+| Vídeo executivo | slides, roteiro e vídeo de até 5 minutos | material enviado separadamente na submissão; conferir checklist final |
 
 ## Pontos que dependem do responsável pela submissão
 
-- executar `terraform plan/apply` em um projeto GCP autorizado;
 - substituir a amostra pela extração completa oficial na evidência final, se
   exigido pela banca;
-- publicar o repositório remoto e abrir o pull request — nenhum PR fictício foi
-  criado;
 - revisar nome, RM e integrantes nos slides antes da entrega;
 - confirmar que o link/vídeo está acessível à banca.
 

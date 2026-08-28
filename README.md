@@ -1,5 +1,7 @@
 # Tech Challenge — Pipeline Híbrido da Alfabetização no Brasil
 
+## Contexto e desafio educacional
+
 Solução de engenharia de dados para acompanhar resultados, metas e evolução da
 alfabetização no Brasil. O projeto integra as seis entidades oficiais do INEP
 publicadas pela Base dos Dados, combina processamento batch e streaming
@@ -18,10 +20,10 @@ da construção é **2023–2024**.
 | Streaming | JSONL com checkpoint e Pub/Sub → BigQuery | Validado no GCP com evento canário |
 | Bronze / Silver / Gold | Parquet ZSTD local; BigQuery particionado na nuvem | Validado no GCP |
 | Qualidade | Sete regras no ciclo GCP, além do ensaio local | **PASS — 7 aprovadas, 0 falhas** |
-| Observabilidade | Manifestos, métricas, alerta de backlog, DLQ e runbook | Entregue |
+| Observabilidade | Manifestos, logs, qualidade, DLQ e runbook; alerta de backlog bloqueado por política organizacional | Entregue com limitação documentada |
 | FinOps | Partição, cluster, Parquet, lifecycle e budget | Entregue |
 | Infraestrutura | Terraform para Google Cloud | Aplicada e validada no GCP |
-| Testes | 6 testes unitários/integração | **PASS** |
+| Testes | 9 testes unitários/integração | **PASS** |
 | Material executivo | Slides, roteiro e vídeo | Mantidos localmente e enviados separadamente |
 
 Evidências reproduzíveis: [execução mais recente](artifacts/evidence/latest_run.json),
@@ -62,28 +64,28 @@ de qualidade for violada.
 
 ```mermaid
 flowchart LR
-  subgraph Sources[Fontes]
-    BD[(Base dos Dados\n6 tabelas BigQuery)]
-    Producer[Simulador de\neventos de alunos]
-    IBGE[(Diretório municipal\nBase dos Dados)]
+  subgraph Fontes
+    BD["Base dos Dados: seis tabelas no BigQuery"]
+    Producer["Simulador de eventos de alunos"]
+    IBGE["Diretório municipal da Base dos Dados"]
   end
 
-  subgraph Ingestion[Ingestão]
-    Batch[Scheduled Queries\n02:00 UTC]
+  subgraph Ingestao[Ingestão]
+    Batch["Scheduled Queries: 02:00 UTC"]
     Topic[Pub/Sub]
-    DLQ[Dead-letter topic]
+    DLQ["Dead-letter topic"]
   end
 
-  subgraph Medallion[Lakehouse]
-    Bronze[(Bronze\nhistórico + eventos)]
-    Silver[(Silver\ntipos + chaves + DQ)]
-    Gold[(Gold\nindicadores + metas + evolução)]
+  subgraph Lakehouse
+    Bronze["Bronze: histórico e eventos"]
+    Silver["Silver: tipos, chaves e qualidade"]
+    Gold["Gold: indicadores, metas e evolução"]
   end
 
-  subgraph Consumption[Consumo e controle]
-    BQ[BigQuery / SQL / BI]
-    GCS[Cloud Storage\nParquet Snappy]
-    Mon[Monitoring\nqualidade + backlog + custo]
+  subgraph Consumo_e_controle[Consumo e controle]
+    BQ["BigQuery, SQL e BI"]
+    GCS["Cloud Storage: Parquet Snappy"]
+    Mon["Monitoring: qualidade, backlog e custo"]
   end
 
   BD --> Batch --> Bronze
@@ -170,6 +172,15 @@ O `event_id` é validado dentro do microbatch e a Silver deduplica por
 `ano + id_aluno`, escolhendo a versão mais recente. Mensagens que não respeitam
 o schema permanecem no backlog e, após cinco tentativas, seguem para a DLQ.
 
+Para demonstrar localmente o fluxo de descarte sem depender de credenciais,
+execute o teste controlado abaixo. Ele envia um evento sem `event_id`, confirma
+o encaminhamento para `data/stream/dlq/alunos_invalidos.jsonl` e grava a
+evidência em `artifacts/evidence/dlq_validation.json`.
+
+```bash
+alfabetizacao-pipeline validate-local-dlq --run-id dlq-validation-final
+```
+
 ## Uso dos dados oficiais
 
 Para extrair as seis tabelas localmente é necessário um projeto GCP com
@@ -227,6 +238,8 @@ Controles implementados:
 - labels, relatório de bytes e orçamento com alertas progressivos.
 
 Hipóteses, fórmulas e preços consultados: [FinOps](docs/finops.md).
+O procedimento para registrar o custo real de cada ciclo, sem inserir valores
+fictícios, está em [evidência de custo](docs/cost_observation.md).
 
 ## Observabilidade e operação
 
@@ -247,9 +260,9 @@ A CI repete os testes e um smoke test em cada push/PR.
 
 O repositório contém commits separados e merges de branches de feature. O
 template de pull request exige evidências, avaliação de risco e rollback. O
-histórico, as branches e o fluxo de publicação estão documentados em
-[Governança Git](docs/git_workflow.md). A PR remota deve ser aberta no
-GitHub/GitLab antes da integração final na `main`.
+histórico, as branches e as PRs integradas estão documentados em
+[Governança Git](docs/git_workflow.md), incluindo a [PR #1](https://github.com/schonlopes/tech-challenge-fase-2-alfabetizacao-data-pipeline/pull/1)
+e a [PR #2](https://github.com/schonlopes/tech-challenge-fase-2-alfabetizacao-data-pipeline/pull/2).
 
 ## Estrutura
 
@@ -282,6 +295,23 @@ alfabetizacao-data-pipeline/
 
 Registro formal: [ADR-001](docs/decisions/ADR-001-platform.md).
 
+## Aplicação analítica e IA
+
+A camada Gold é uma base confiável para decisões educacionais e para projetos de
+IA, sempre com validação humana e sem tentar reidentificar estudantes:
+
+- **Predição:** usar `indicador_municipio`, `evolucao_municipio` e
+  `meta_resultado_municipio` para estimar risco de não atingimento de meta e
+  priorizar apoio técnico aos municípios;
+- **Desigualdade educacional:** comparar taxa, participação, rede, UF e evolução
+  anual para localizar lacunas territoriais e acompanhar sua redução;
+- **Políticas públicas baseadas em dados:** simular cenários de metas, selecionar
+  territórios prioritários e medir o resultado das intervenções ao longo do tempo.
+
+Modelos devem usar separação temporal, avaliação por território, monitoramento
+de drift e explicabilidade. Os resultados servem de apoio à decisão pública, não
+de decisão automática sobre estudantes, escolas ou municípios.
+
 ## Segurança, LGPD e IA
 
 Os dados oficiais identificam escolas/alunos por códigos fictícios ou
@@ -304,4 +334,5 @@ oficiais e documentação primária. Veja a [declaração de uso de IA](docs/ai_
 ## Matriz de atendimento
 
 A correspondência entre cada requisito do enunciado e sua evidência está em
-[docs/evaluation_matrix.md](docs/evaluation_matrix.md).
+[docs/evaluation_matrix.md](docs/evaluation_matrix.md). Para a revisão final
+antes da submissão, use também a [prontidão da Fase 2](docs/phase2_compliance.md).

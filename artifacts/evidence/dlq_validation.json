@@ -1,0 +1,10 @@
+{
+  "run_id": "dlq-validation-final",
+  "status": "PASS",
+  "accepted_events": 0,
+  "dlq_events": 1,
+  "reason": "missing_required_fields",
+  "evidence_path": "C:\\Users\\schon\\Desktop\\Pós AI Scientist\\Fase 2\\Tech Challenge\\alfabetizacao-data-pipeline\\data\\stream\\dlq\\alunos_invalidos.jsonl",
+  "validated_at": "2026-08-27T23:24:02.774656+00:00",
+  "scope": "Simulação local equivalente ao encaminhamento para DLQ; não substitui a confirmação no Pub/Sub em produção."
+}
