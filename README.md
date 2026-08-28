@@ -1,5 +1,7 @@
 # Tech Challenge — Pipeline Híbrido da Alfabetização no Brasil
 
+## Contexto e desafio educacional
+
 Solução de engenharia de dados para acompanhar resultados, metas e evolução da
 alfabetização no Brasil. O projeto integra as seis entidades oficiais do INEP
 publicadas pela Base dos Dados, combina processamento batch e streaming
@@ -60,43 +62,7 @@ de qualidade for violada.
 
 ## Arquitetura
 
-```mermaid
-flowchart LR
-  subgraph Sources[Fontes]
-    BD[(Base dos Dados\n6 tabelas BigQuery)]
-    Producer[Simulador de\neventos de alunos]
-    IBGE[(Diretório municipal\nBase dos Dados)]
-  end
-
-  subgraph Ingestion[Ingestão]
-    Batch[Scheduled Queries\n02:00 UTC]
-    Topic[Pub/Sub]
-    DLQ[Dead-letter topic]
-  end
-
-  subgraph Medallion[Lakehouse]
-    Bronze[(Bronze\nhistórico + eventos)]
-    Silver[(Silver\ntipos + chaves + DQ)]
-    Gold[(Gold\nindicadores + metas + evolução)]
-  end
-
-  subgraph Consumption[Consumo e controle]
-    BQ[BigQuery / SQL / BI]
-    GCS[Cloud Storage\nParquet Snappy]
-    Mon[Monitoring\nqualidade + backlog + custo]
-  end
-
-  BD --> Batch --> Bronze
-  Producer --> Topic --> Bronze
-  Topic -. erro .-> DLQ
-  IBGE --> Silver
-  Bronze --> Silver --> Gold
-  Gold --> BQ
-  Gold --> GCS
-  Bronze --> Mon
-  Silver --> Mon
-  Gold --> Mon
-  ```
+![Diagrama da pipeline híbrida: fontes oficiais e eventos fluem para Bronze, Silver e Gold; a Gold atende BigQuery/BI e Cloud Storage, enquanto monitoramento acompanha as três camadas.](docs/images/architecture_pipeline.svg)
 
 No ambiente local, DuckDB substitui os serviços gerenciados e grava Parquet
 ZSTD. Na nuvem, BigQuery executa os jobs batch e analíticos, enquanto uma
