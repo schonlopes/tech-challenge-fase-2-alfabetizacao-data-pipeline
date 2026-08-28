@@ -1,5 +1,7 @@
 # Tech Challenge — Pipeline Híbrido da Alfabetização no Brasil
 
+## Contexto e desafio educacional
+
 Solução de engenharia de dados para acompanhar resultados, metas e evolução da
 alfabetização no Brasil. O projeto integra as seis entidades oficiais do INEP
 publicadas pela Base dos Dados, combina processamento batch e streaming
@@ -62,28 +64,28 @@ de qualidade for violada.
 
 ```mermaid
 flowchart LR
-  subgraph Sources[Fontes]
-    BD[(Base dos Dados\n6 tabelas BigQuery)]
-    Producer[Simulador de\neventos de alunos]
-    IBGE[(Diretório municipal\nBase dos Dados)]
+  subgraph Fontes
+    BD["Base dos Dados: seis tabelas no BigQuery"]
+    Producer["Simulador de eventos de alunos"]
+    IBGE["Diretório municipal da Base dos Dados"]
   end
 
-  subgraph Ingestion[Ingestão]
-    Batch[Scheduled Queries\n02:00 UTC]
+  subgraph Ingestao[Ingestão]
+    Batch["Scheduled Queries: 02:00 UTC"]
     Topic[Pub/Sub]
-    DLQ[Dead-letter topic]
+    DLQ["Dead-letter topic"]
   end
 
-  subgraph Medallion[Lakehouse]
-    Bronze[(Bronze\nhistórico + eventos)]
-    Silver[(Silver\ntipos + chaves + DQ)]
-    Gold[(Gold\nindicadores + metas + evolução)]
+  subgraph Lakehouse
+    Bronze["Bronze: histórico e eventos"]
+    Silver["Silver: tipos, chaves e qualidade"]
+    Gold["Gold: indicadores, metas e evolução"]
   end
 
-  subgraph Consumption[Consumo e controle]
-    BQ[BigQuery / SQL / BI]
-    GCS[Cloud Storage\nParquet Snappy]
-    Mon[Monitoring\nqualidade + backlog + custo]
+  subgraph Consumo_e_controle[Consumo e controle]
+    BQ["BigQuery, SQL e BI"]
+    GCS["Cloud Storage: Parquet Snappy"]
+    Mon["Monitoring: qualidade, backlog e custo"]
   end
 
   BD --> Batch --> Bronze
