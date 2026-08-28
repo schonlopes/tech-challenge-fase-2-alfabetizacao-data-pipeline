@@ -62,7 +62,19 @@ de qualidade for violada.
 
 ## Arquitetura
 
-![Diagrama da pipeline híbrida: fontes oficiais e eventos fluem para Bronze, Silver e Gold; a Gold atende BigQuery/BI e Cloud Storage, enquanto monitoramento acompanha as três camadas.](docs/images/architecture_pipeline.svg)
+```text
+FONTES E INGESTÃO
+
+Base dos Dados (6 tabelas) --> Scheduled Queries --> Bronze --> Silver --> Gold --> BigQuery / SQL / BI
+Simulador de eventos -------> Pub/Sub -----------> Bronze
+                                                └--> DLQ (eventos inválidos)
+Diretório municipal -------------------------------------------> Silver
+
+CONSUMO E CONTROLE
+
+Gold --> Cloud Storage (Parquet Snappy)
+Bronze, Silver e Gold --> Monitoring (qualidade, backlog, DLQ e custo)
+```
 
 No ambiente local, DuckDB substitui os serviços gerenciados e grava Parquet
 ZSTD. Na nuvem, BigQuery executa os jobs batch e analíticos, enquanto uma
