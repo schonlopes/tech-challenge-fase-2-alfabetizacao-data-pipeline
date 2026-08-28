@@ -60,6 +60,7 @@ de qualidade for violada.
 
 ## Arquitetura
 
+```mermaid
 flowchart LR
   subgraph Sources[Fontes]
     BD[(Base dos Dados\n6 tabelas BigQuery)]
@@ -95,6 +96,7 @@ flowchart LR
   Bronze --> Mon
   Silver --> Mon
   Gold --> Mon
+  ```
 
 No ambiente local, DuckDB substitui os serviços gerenciados e grava Parquet
 ZSTD. Na nuvem, BigQuery executa os jobs batch e analíticos, enquanto uma
